@@ -1,0 +1,12 @@
+{
+  "name": "draft-builder-example",
+  "description": "Static site builder based on gulp.",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.2",
+    "gulp-imageoptim": "^1.0.3",
+    "gulp-nunjucks-render": "^2.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}

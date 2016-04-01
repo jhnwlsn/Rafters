@@ -1,0 +1,117 @@
+// *************************************
+//
+//   Config
+//   -> Fonts, Variables
+//
+// *************************************
+
+// -------------------------------------
+//   @font-face
+// -------------------------------------
+
+// ...
+
+// -------------------------------------
+//   Colors
+// -------------------------------------
+
+// ----- Palette ----- //
+
+$blue: #2faae0
+$brown: #755400
+$green: #77b830
+$orange: #dc4d1f
+$yellow: #fabf00
+
+// ----- Grayscale ----- //
+
+$gray-light: #eaeaea
+$gray: #555555
+$gray-dark: #333333
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+// ----- Borders & Box Shadow ----- //
+
+$b-borderRadius: 4px
+$b-borderStyle: solid
+$b-borderWidth: 1px
+$b-border: $b-borderWidth $b-borderStyle darken($gray-light, 5%)
+$b-boxShadow: rgba(black, 0.2) 0 1px 3px 0
+$b-boxShadow-lg: rgba(black, 0.1) 0 5px 25px 0
+
+// ----- Sizing ----- //
+
+$b-space: 20px
+
+// ----- Transitions ----- //
+
+$b-transition: all 400ms cubic-bezier(.55,0,.1,1)
+
+// ----- Layering ----- //
+
+$z-navbar: 30
+$z-sidebar: 10
+$z-window: 20
+
+// -------------------------------------
+//   Typography
+// -------------------------------------
+
+// ----- Family ----- //
+
+$t-fontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+// ----- Line Height ----- //
+
+$t-lineHeight: 1.5
+
+// ----- Size ----- //
+
+$t-fontSize-xs: 10px
+$t-fontSize-s: 12px
+$t-fontSize: 14px
+$t-fontSize-l: 18px
+
+// Headings
+
+$t-heading-fontSize-s: 24px
+$t-heading-fontSize: 36px
+$t-heading-fontSize-l: 90px
+
+// -------------------------------------
+//   Modules
+// -------------------------------------
+
+// ----- Grid ----- //
+
+// Breakpoints
+
+$g-s: 480px
+$g-m: 800px
+$g-l: 1024px
+
+// Settings
+
+$g-columns: 12
+$g-defaults: 's' $g-s, 'm' $g-m, 'l' $g-l
+$g-gutter: $b-space * 2
+$g-silent: false
+
+// Selector
+
+$g-selector: if($g-silent, unquote('%'), unquote('.'))
+
+// ----- Navbar ----- //
+
+$navbar-height: ($b-space * 3)
+
+// ----- Sidebar ----- //
+
+$sidebar-width: 290px
+
+// ----- Window ----- //
+
+$window-content-width: 550px

@@ -1,0 +1,57 @@
+// *************************************
+//
+//   Base
+//   -> Tag-level settings
+//
+// *************************************
+
+*, *::before, *::after
+  box-sizing: border-box
+
+html
+  -webkit-font-smoothing: antialiased
+  background-color: white
+  color: $gray
+  font-family: $t-fontFamily
+  font-size: $t-fontSize
+  line-height: $t-lineHeight
+
+body
+  font-size: 100%
+
+// -------------------------------------
+//   Block Content
+// -------------------------------------
+
+ul, p
+  margin-bottom: $b-space
+  margin-top: 0
+
+li
+  margin-bottom: $b-space
+  margin-top: 0
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4
+  font-weight: 300
+
+// -------------------------------------
+//   Inline Content
+// -------------------------------------
+
+// ----- Links ----- //
+
+a
+  color: $blue
+  text-decoration: none
+  &:hover,
+  &:focus
+    color: lighten($blue, 10%)
+
+// ----- Images ----- //
+
+img
+  height: auto
+  max-width: 100%
