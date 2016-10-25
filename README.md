@@ -1,5 +1,3 @@
-<img src="https://github.com/jhnwlsn/rafters/blob/master/source/assets/images/rafters-icon.png?raw=true" alt="rafter icon" style="width: 70px;" />
-
 # Rafters
 #### Stupid simple template builder
 
