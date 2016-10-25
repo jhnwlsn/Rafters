@@ -12,10 +12,14 @@
 // -------------------------------------
 
 var gulp            = require("gulp");
-var connect         = require ("gulp-connect");
-var nunjucksRender  = require('gulp-nunjucks-render');
+var autoprefixer    = require("gulp-autoprefixer");
+var connect         = require("gulp-connect");
+var data            = require("gulp-data");
+var nunjucksRender  = require("gulp-nunjucks-render");
+var plumber         = require("gulp-plumber");
 var sass            = require("gulp-sass");
-var sourcemaps      = require('gulp-sourcemaps');
+var sourcemaps      = require("gulp-sourcemaps");
+var webpack         = require('gulp-webpack'); 
 
 // -------------------------------------
 //   Server
@@ -29,32 +33,43 @@ gulp.task("connect", function() {
 });
 
 // -------------------------------------
-//   Assets
+//   Tasks
 // -------------------------------------
 
+// ----- Assets ----- //
+
 gulp.task("images", function() {
-  gulp.src("./source/assets/images/*")
-    .pipe(gulp.dest("./build/assets/images"))
+  gulp.src("./source/assets/images/**/*")
+    .pipe(plumber())
+    .pipe(gulp.dest("./build/assets/images/"))
     .pipe(connect.reload());
 });
 
 gulp.task("styles", function() {
   gulp.src("./source/assets/stylesheets/*.sass")
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on("error", sass.logError))
+    .pipe(autoprefixer())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("./build/assets"))
+    .pipe(gulp.dest("./build/assets/stylesheets/"))
     .pipe(connect.reload());
 });
 
 gulp.task("scripts", function() {
-  gulp.src("./source/assets/javascripts/*.js")
+  gulp.src("./source/assets/javascripts/**/*.js")
+    .pipe(plumber())
+    .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest("./build/assets"))
     .pipe(connect.reload());
 });
 
 gulp.task("template", function() {
   gulp.src("./source/**/*.html")
+    .pipe(plumber())
+    .pipe(data(function() {
+      return require('./data/data.json')
+    }))
     .pipe(nunjucksRender({
       path: ["./source/shared"]
     }))
@@ -68,6 +83,8 @@ gulp.task("watch", ["images", "styles", "scripts", "template"], function() {
   gulp.watch(["./source/assets/javascripts/**/*"], ["scripts"]);
   gulp.watch(["./source/assets/stylesheets/**/*"], ["styles"]);
 });
+
+// ----- Default ----- //
 
 gulp.task("default", ["connect", "watch"]);
 
