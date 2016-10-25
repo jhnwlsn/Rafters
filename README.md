@@ -1,3 +1,4 @@
+![Rafters Icon]()
 # Rafters
 #### Stupid simple template builder
 
