@@ -15,11 +15,12 @@ var gulp            = require("gulp");
 var autoprefixer    = require("gulp-autoprefixer");
 var connect         = require("gulp-connect");
 var data            = require("gulp-data");
+var ghPages         = require("gulp-gh-pages");
 var nunjucksRender  = require("gulp-nunjucks-render");
 var plumber         = require("gulp-plumber");
 var sass            = require("gulp-sass");
 var sourcemaps      = require("gulp-sourcemaps");
-var webpack         = require('gulp-webpack'); 
+var webpack         = require("gulp-webpack"); 
 
 // -------------------------------------
 //   Server
@@ -87,4 +88,15 @@ gulp.task("watch", ["images", "styles", "scripts", "template"], function() {
 // ----- Default ----- //
 
 gulp.task("default", ["connect", "watch"]);
+
+// -------------------------------------
+//   Tasks
+// -------------------------------------
+
+gulp.task('deploy', function() {
+  file('CNAME', 'Custom domain url goes here')
+    .pipe(gulp.dest('./build'));
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
+});
 
