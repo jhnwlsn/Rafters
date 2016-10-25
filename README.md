@@ -1,4 +1,4 @@
-![Rafters Icon]()
+![Rafters Icon](https://github.com/jhnwlsn/rafters/blob/master/source/assets/images/rafters-icon.png?raw=true)
 # Rafters
 #### Stupid simple template builder
 
