@@ -1,27 +1,21 @@
 // *************************************
 //
-//   Solomon - Gulp Setup
+//   Rafters
+//   -> Stupid simple template builder
 //
 // *************************************
 
 'use strict';
 
 // -------------------------------------
-//   Foundation
+//   Plugins 
 // -------------------------------------
 
-// ----- Requires ----- //
-
-var gulp = require("gulp"),
-    connect = require ("gulp-connect"),
-    imageOptim = require('gulp-imageoptim'),
-    nunjucksRender = require('gulp-nunjucks-render'),
-    sass = require("gulp-sass"),
-    sourcemaps = require('gulp-sourcemaps');
-
-// ----- Task: Default ----- //
-
-gulp.task("default", ["connect", "watch"]);
+var gulp            = require("gulp");
+var connect         = require ("gulp-connect");
+var nunjucksRender  = require('gulp-nunjucks-render');
+var sass            = require("gulp-sass");
+var sourcemaps      = require('gulp-sourcemaps');
 
 // -------------------------------------
 //   Server
@@ -40,7 +34,6 @@ gulp.task("connect", function() {
 
 gulp.task("images", function() {
   gulp.src("./source/assets/images/*")
-    .pipe(imageOptim.optimize())
     .pipe(gulp.dest("./build/assets/images"))
     .pipe(connect.reload());
 });
@@ -75,3 +68,6 @@ gulp.task("watch", ["images", "styles", "scripts", "template"], function() {
   gulp.watch(["./source/assets/javascripts/**/*"], ["scripts"]);
   gulp.watch(["./source/assets/stylesheets/**/*"], ["styles"]);
 });
+
+gulp.task("default", ["connect", "watch"]);
+
