@@ -61,7 +61,7 @@ gulp.task("scripts", function() {
   gulp.src("./source/assets/javascripts/**/*.js")
     .pipe(plumber())
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest("./build/assets"))
+    .pipe(gulp.dest("./build/assets/javascripts/"))
     .pipe(connect.reload());
 });
 
