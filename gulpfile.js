@@ -19,7 +19,6 @@ var ghPages         = require("gulp-gh-pages");
 var nunjucksRender  = require("gulp-nunjucks-render");
 var plumber         = require("gulp-plumber");
 var sass            = require("gulp-sass");
-var sourcemaps      = require("gulp-sourcemaps");
 var webpack         = require("gulp-webpack"); 
 
 // -------------------------------------
@@ -49,10 +48,8 @@ gulp.task("images", function() {
 gulp.task("styles", function() {
   gulp.src("./source/assets/stylesheets/*.sass")
     .pipe(plumber())
-    .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on("error", sass.logError))
     .pipe(autoprefixer())
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest("./build/assets/stylesheets/"))
     .pipe(connect.reload());
 });
